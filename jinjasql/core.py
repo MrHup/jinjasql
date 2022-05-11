@@ -170,8 +170,9 @@ class JinjaSql(object):
     # asyncpg "where name = $1"
     VALID_PARAM_STYLES = ('qmark', 'numeric', 'named', 'format', 'pyformat', 'asyncpg')
     VALID_ID_QUOTE_CHARS = ('`', '"')
-    def __init__(self, env=None, param_style='format', identifier_quote_character='"'):
+    def __init__(self, env=None, param_style='format', identifier_quote_character='"', extended_array_support=False):
         self.param_style = param_style
+        self.extended_array_support = extended_array_support
         if identifier_quote_character not in self.VALID_ID_QUOTE_CHARS:
             raise ValueError("identifier_quote_characters must be one of " + VALID_ID_QUOTE_CHARS)
         self.identifier_quote_character = identifier_quote_character
